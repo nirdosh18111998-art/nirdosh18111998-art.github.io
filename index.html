@@ -174,7 +174,7 @@
 
     /* ─── SECTIONS ─── */
     section {
-      padding: 100px 5%;
+      padding: 80px 5%;
       max-width: 1200px;
       margin: 0 auto;
     }
@@ -185,8 +185,8 @@
       display: flex;
       flex-direction: column;
       justify-content: center;
-      padding-top: calc(var(--nav-h) + 60px);
-      padding-bottom: 80px;
+      padding-top: calc(var(--nav-h) + 40px);
+      padding-bottom: 40px;
       position: relative;
       max-width: 100%;
     }
@@ -314,7 +314,7 @@
     .hero-stats {
       display: flex;
       gap: 3rem;
-      margin-top: 4rem;
+      margin-top: 2rem;
       animation: fadeUp .6s .4s ease both;
     }
 
@@ -358,7 +358,7 @@
 
     /* ─── SECTION HEADER ─── */
     .sec-header {
-      margin-bottom: 3.5rem;
+      margin-bottom: 2.5rem;
     }
 
     .sec-tag {
@@ -383,6 +383,7 @@
     /* ─── ABOUT ─── */
     #about {
       background: var(--bg);
+      padding-top: 40px;
     }
 
     .about-grid {
@@ -398,17 +399,10 @@
 
     .about-avatar {
       width: 100%;
-      aspect-ratio: 1;
+      aspect-ratio: 1 / 1;
       border-radius: 24px;
+      overflow: hidden;
       background: linear-gradient(135deg, var(--accent2), #001a0d);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-family: 'Clash Display', sans-serif;
-      font-size: 5rem;
-      font-weight: 800;
-      color: var(--accent);
-      letter-spacing: -.05em;
     }
 
     .about-tag-float {
@@ -444,17 +438,18 @@
     }
 
     .skills-groups {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 2rem;
+      display: flex;
+      justify-content: center;
     }
 
     .skill-group {
       background: var(--card);
       border-radius: var(--radius);
-      padding: 2rem;
+      padding: 2.5rem;
       border: 1px solid var(--border);
       transition: transform .2s, box-shadow .2s;
+      width: 100%;
+      max-width: 500px;
     }
 
     .skill-group:hover {
@@ -477,24 +472,24 @@
 
     .skill-group h3 {
       font-family: 'Clash Display', sans-serif;
-      font-size: 1rem;
+      font-size: 1.1rem;
       font-weight: 700;
-      margin-bottom: 1rem;
+      margin-bottom: 1.2rem;
       color: var(--ink);
     }
 
     .skill-tags {
       display: flex;
       flex-wrap: wrap;
-      gap: .5rem;
+      gap: .6rem;
     }
 
     .skill-tag {
       background: var(--bg2);
       color: var(--ink2);
-      padding: .3rem .8rem;
+      padding: .35rem .9rem;
       border-radius: 50px;
-      font-size: .8rem;
+      font-size: .82rem;
       font-weight: 500;
       border: 1px solid var(--border);
     }
@@ -909,11 +904,9 @@
       }
 
       .about-avatar {
-        max-width: 260px;
-      }
-
-      .skills-groups {
-        grid-template-columns: 1fr 1fr;
+        max-width: 320px;
+        aspect-ratio: auto;
+        height: auto;
       }
 
       #projects-grid {
@@ -936,15 +929,16 @@
 
     @media (max-width: 600px) {
       section {
-        padding: 70px 5%;
+        padding: 50px 5%;
       }
 
       .hero-title {
         font-size: clamp(2.5rem, 10vw, 4rem);
       }
 
-      .skills-groups {
-        grid-template-columns: 1fr;
+      .skill-group {
+        max-width: 100%;
+        padding: 1.75rem 1rem;
       }
 
       #projects-grid {
@@ -1003,7 +997,7 @@
   <!-- HERO -->
   <section id="hero">
     <div class="hero-inner">
-      <div class="hero-badge">Available for freelance work</div>
+
       <h1 class="hero-title">
         Nirdosh<br>
         <span class="line2">Kapoor.</span>
@@ -1042,16 +1036,16 @@
   <section id="about">
     <div class="about-grid reveal">
       <div class="about-img-wrap">
-        <div class="about-avatar">NK</div>
-        <div class="about-tag-float">🚀 Vibe Coder<br><span style="font-size:.75rem;opacity:.7">Punjab, India</span>
-        </div>
+        <div class="about-avatar"><img src="nirdosh.jpg" alt="Nirdosh Kapoor"
+            style="width:100%;height:100%;object-fit:cover;object-position:top center;border-radius:24px;"></div>
       </div>
       <div class="about-text">
         <div class="sec-header">
           <div class="sec-tag">About Me</div>
           <h2 class="sec-title">The person<br>behind the builds</h2>
         </div>
-        <p>Hey, I'm <strong>Nirdosh Kapoor</strong> — a creative freelancer and vibe coder based in Punjab, India. I
+        <p>Hey, I'm <strong>Nirdosh Kapoor</strong> — a creative freelancer and vibe coder based in Dharamshala,
+          Himachal Pradesh, India. I
           turn ideas into real digital products at the intersection of AI and design.</p>
         <p>I specialize in <strong>AI applications, websites, dashboards</strong>, and full-stack digital products. My
           workflow? Prompt, build, ship. Fast, clean, and always functional.</p>
@@ -1087,29 +1081,6 @@
           <span class="skill-tag">LLM Integration</span>
           <span class="skill-tag">Vibe Coding</span>
           <span class="skill-tag">Chatbots</span>
-        </div>
-      </div>
-      <div class="skill-group">
-        <div class="skill-group-icon">🌐</div>
-        <h3>Web Development</h3>
-        <div class="skill-tags">
-          <span class="skill-tag">HTML / CSS / JS</span>
-          <span class="skill-tag">React</span>
-          <span class="skill-tag">Next.js</span>
-          <span class="skill-tag">Node.js</span>
-          <span class="skill-tag">REST APIs</span>
-          <span class="skill-tag">Full-Stack</span>
-        </div>
-      </div>
-      <div class="skill-group">
-        <div class="skill-group-icon">📊</div>
-        <h3>Design & Dashboards</h3>
-        <div class="skill-tags">
-          <span class="skill-tag">Dashboard Design</span>
-          <span class="skill-tag">UI / UX</span>
-          <span class="skill-tag">Data Viz</span>
-          <span class="skill-tag">Figma</span>
-          <span class="skill-tag">Responsive Design</span>
         </div>
       </div>
     </div>
@@ -1208,7 +1179,7 @@
           <div class="contact-item-icon">📍</div>
           <div>
             <div class="contact-item-label">Location</div>
-            <span class="contact-item-val">Punjab, India</span>
+            <span class="contact-item-val">Dharamshala, Himachal Pradesh, India</span>
           </div>
         </div>
         <div class="contact-item">
