@@ -174,19 +174,23 @@
 
     /* ─── SECTIONS ─── */
     section {
-      padding: 80px 5%;
+      padding: 60px 5%;
       max-width: 1200px;
       margin: 0 auto;
     }
 
+    #about {
+      padding-top: 50px;
+    }
+
     /* ─── HERO ─── */
     #hero {
-      min-height: 100vh;
+      min-height: auto;
       display: flex;
       flex-direction: column;
       justify-content: center;
       padding-top: calc(var(--nav-h) + 40px);
-      padding-bottom: 40px;
+      padding-bottom: 20px;
       position: relative;
       max-width: 100%;
     }
@@ -196,6 +200,115 @@
       margin: 0 auto;
       padding: 0 5%;
       width: 100%;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 4rem;
+      align-items: center;
+    }
+
+    /* ─── TERMINAL ─── */
+    .hero-terminal {
+      animation: fadeUp .6s .5s ease both;
+      flex-shrink: 0;
+    }
+
+    .terminal-window {
+      background: #161616;
+      border: 1px solid #2a2a2a;
+      border-radius: 16px;
+      overflow: hidden;
+      box-shadow: 0 24px 64px rgba(0, 0, 0, .55), 0 0 40px rgba(0, 255, 136, .07);
+      font-family: 'SF Mono', 'Fira Code', 'Fira Mono', 'Cascadia Code', monospace;
+    }
+
+    .terminal-header {
+      background: #1e1e1e;
+      border-bottom: 1px solid #2a2a2a;
+      padding: .75rem 1rem;
+      display: flex;
+      align-items: center;
+      gap: .5rem;
+    }
+
+    .term-dot {
+      width: 12px;
+      height: 12px;
+      border-radius: 50%;
+    }
+
+    .term-dot-r {
+      background: #ff5f57;
+    }
+
+    .term-dot-y {
+      background: #febc2e;
+    }
+
+    .term-dot-g {
+      background: #28c840;
+    }
+
+    .terminal-title {
+      margin-left: .5rem;
+      font-size: .75rem;
+      color: #666;
+      font-family: 'Poppins', sans-serif;
+      letter-spacing: .03em;
+    }
+
+    .terminal-body {
+      padding: 1.5rem;
+      min-height: 230px;
+      display: flex;
+      flex-direction: column;
+      gap: .9rem;
+    }
+
+    .term-line {
+      display: flex;
+      flex-direction: column;
+      gap: .2rem;
+    }
+
+    .term-cmd {
+      color: #00ff88;
+      font-size: .9rem;
+      min-height: 1.4em;
+    }
+
+    .term-resp {
+      color: #ffffff;
+      font-size: .9rem;
+      padding-left: 1.2rem;
+      min-height: 1.4em;
+      opacity: 0;
+      transition: opacity .3s;
+    }
+
+    .term-resp.visible {
+      opacity: 1;
+    }
+
+    .term-cursor {
+      display: inline-block;
+      width: 8px;
+      height: 1em;
+      background: #00ff88;
+      vertical-align: text-bottom;
+      margin-left: 1px;
+      animation: blink 1s step-end infinite;
+    }
+
+    @keyframes blink {
+
+      0%,
+      100% {
+        opacity: 1;
+      }
+
+      50% {
+        opacity: 0;
+      }
     }
 
     .hero-badge {
@@ -383,7 +496,6 @@
     /* ─── ABOUT ─── */
     #about {
       background: var(--bg);
-      padding-top: 40px;
     }
 
     .about-grid {
@@ -898,6 +1010,11 @@
         display: flex;
       }
 
+      .hero-inner {
+        grid-template-columns: 1fr;
+        gap: 3rem;
+      }
+
       .about-grid {
         grid-template-columns: 1fr;
         gap: 2.5rem;
@@ -927,20 +1044,92 @@
       }
     }
 
-    @media (max-width: 600px) {
+    @media (max-width: 768px) {
+
+      /* ── no horizontal scroll ── */
+      html,
+      body {
+        overflow-x: hidden;
+        width: 100%;
+      }
+
+      /* ── uniform 16px side padding ── */
       section {
-        padding: 50px 5%;
+        padding: 40px 16px;
+        max-width: 100%;
+      }
+
+      #about {
+        padding-top: 40px;
+      }
+
+      .hero-inner {
+        padding: 0 16px;
+      }
+
+      /* ── hero ── */
+      #hero {
+        padding-bottom: 10px;
       }
 
       .hero-title {
-        font-size: clamp(2.5rem, 10vw, 4rem);
+        font-size: clamp(2.2rem, 9vw, 3.5rem);
       }
 
+      .hero-sub {
+        font-size: 1rem;
+        max-width: 100%;
+      }
+
+      /* ── full-width buttons ── */
+      .hero-btns {
+        flex-direction: column;
+        gap: .75rem;
+      }
+
+      .btn-primary,
+      .btn-outline {
+        width: 100%;
+        justify-content: center;
+      }
+
+      /* ── hero stats ── */
+      .hero-stats {
+        flex-wrap: wrap;
+        gap: 1.2rem;
+      }
+
+      /* ── terminal full width ── */
+      .hero-terminal {
+        width: 100%;
+      }
+
+      .terminal-window {
+        width: 100%;
+      }
+
+      /* ── about ── */
+      .about-avatar {
+        max-width: 100%;
+        aspect-ratio: auto;
+        height: auto;
+      }
+
+      .about-tag-float {
+        display: none;
+      }
+
+      /* ── skill card full width ── */
       .skill-group {
         max-width: 100%;
-        padding: 1.75rem 1rem;
+        padding: 1.5rem 1rem;
       }
 
+      .skills-groups {
+        max-width: 100%;
+      }
+
+      /* ── projects & blog: single column ── */
       #projects-grid {
         grid-template-columns: 1fr;
       }
@@ -949,17 +1138,38 @@
         grid-template-columns: 1fr;
       }
 
-      .hero-stats {
-        flex-wrap: wrap;
-        gap: 1.5rem;
+      /* ── contact ── */
+      .contact-grid {
+        grid-template-columns: 1fr;
+        gap: 2rem;
       }
 
+      /* ── form ── */
       .form-row {
         grid-template-columns: 1fr;
       }
 
-      .about-tag-float {
-        display: none;
+      .btn-send {
+        width: 100%;
+        justify-content: center;
+      }
+
+      /* ── footer ── */
+      footer {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: .75rem;
+        padding: 2rem 16px;
+      }
+
+      /* ── blog section ── */
+      #blog {
+        border-radius: 16px;
+      }
+
+      /* ── skills section ── */
+      #skills {
+        border-radius: 16px;
       }
     }
   </style>
@@ -998,46 +1208,64 @@
   <section id="hero">
     <div class="hero-inner">
 
-      <h1 class="hero-title">
-        Nirdosh<br>
-        <span class="line2">Kapoor.</span>
-      </h1>
-      <p class="hero-sub">
-        I build things with vibes — AI-powered apps, slick dashboards, full-stack websites, and anything in between. If
-        it can be coded, it can be vibed.
-      </p>
-      <div class="hero-btns">
-        <a href="#projects" class="btn-primary">See My Work →</a>
-        <a href="#contact" class="btn-outline">
-          <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
-            <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z" />
-          </svg>
-          Get In Touch
-        </a>
+      <!-- LEFT: text content -->
+      <div class="hero-content">
+        <h1 class="hero-title">
+          Nirdosh<br>
+          <span class="line2">Kapoor.</span>
+        </h1>
+        <p class="hero-sub">
+          I build things with vibes &mdash; AI-powered apps, slick dashboards, full-stack websites, and anything in
+          between. If
+          it can be coded, it can be vibed.
+        </p>
+        <div class="hero-btns">
+          <a href="#projects" class="btn-primary">See My Work &rarr;</a>
+          <a href="#contact" class="btn-outline">
+            <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+              <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z" />
+            </svg>
+            Get In Touch
+          </a>
+        </div>
+        <div class="hero-stats">
+          <div>
+            <div class="stat-num">AI</div>
+            <div class="stat-label">Apps &amp; Tools</div>
+          </div>
+          <div>
+            <div class="stat-num">&infin;</div>
+            <div class="stat-label">Ideas Shipped</div>
+          </div>
+          <div>
+            <div class="stat-num">100%</div>
+            <div class="stat-label">Vibe Coded</div>
+          </div>
+        </div>
       </div>
-      <div class="hero-stats">
-        <div>
-          <div class="stat-num">AI</div>
-          <div class="stat-label">Apps & Tools</div>
-        </div>
-        <div>
-          <div class="stat-num">∞</div>
-          <div class="stat-label">Ideas Shipped</div>
-        </div>
-        <div>
-          <div class="stat-num">100%</div>
-          <div class="stat-label">Vibe Coded</div>
+
+      <!-- RIGHT: animated terminal -->
+      <div class="hero-terminal">
+        <div class="terminal-window">
+          <div class="terminal-header">
+            <span class="term-dot term-dot-r"></span>
+            <span class="term-dot term-dot-y"></span>
+            <span class="term-dot term-dot-g"></span>
+            <span class="terminal-title">nk@portfolio ~ %</span>
+          </div>
+          <div class="terminal-body" id="termBody">
+            <!-- lines injected by JS -->
+          </div>
         </div>
       </div>
     </div>
   </section>
-
   <!-- ABOUT -->
   <section id="about">
     <div class="about-grid reveal">
       <div class="about-img-wrap">
         <div class="about-avatar"><img src="nirdosh.jpg" alt="Nirdosh Kapoor"
-            style="width:100%;height:100%;object-fit:cover;object-position:top center;border-radius:24px;"></div>
+            style="width:100%;height:100%;object-fit:cover;object-position:top;border-radius:24px;"></div>
       </div>
       <div class="about-text">
         <div class="sec-header">
@@ -1299,6 +1527,76 @@
         </div>`;
       }
     }
+    // ── Terminal typing animation ──
+    (function initTerminal() {
+      const termBody = document.getElementById('termBody');
+      if (!termBody) return;
+
+      const lines = [
+        { cmd: '$ whoami', resp: 'Nirdosh Kapoor' },
+        { cmd: '$ skills', resp: 'AI Apps · Vibe Coding' },
+        { cmd: '$ status', resp: 'Available ✓' },
+        { cmd: '$ passion', resp: 'Building cool things' },
+      ];
+
+      const CHAR_DELAY = 60;   // ms per character
+      const RESP_DELAY = 380;  // ms after command before response appears
+      const LINE_GAP = 700;  // ms between lines
+      const LOOP_PAUSE = 2800; // ms before restarting loop
+
+      function sleep(ms) { return new Promise(r => setTimeout(r, ms)); }
+
+      async function typeText(el, text) {
+        el.textContent = '';
+        const cursor = document.createElement('span');
+        cursor.className = 'term-cursor';
+        el.appendChild(cursor);
+        for (const ch of text) {
+          cursor.insertAdjacentText('beforebegin', ch);
+          await sleep(CHAR_DELAY);
+        }
+        return cursor; // return so caller can remove it
+      }
+
+      async function runLoop() {
+        while (true) {
+          termBody.innerHTML = '';
+          const cursors = [];
+
+          for (const lineData of lines) {
+            // Create a line block
+            const lineEl = document.createElement('div');
+            lineEl.className = 'term-line';
+
+            const cmdEl = document.createElement('div');
+            cmdEl.className = 'term-cmd';
+            const respEl = document.createElement('div');
+            respEl.className = 'term-resp';
+
+            lineEl.appendChild(cmdEl);
+            lineEl.appendChild(respEl);
+            termBody.appendChild(lineEl);
+
+            // Type command
+            const cursor = await typeText(cmdEl, lineData.cmd);
+            await sleep(RESP_DELAY);
+
+            // Remove inline cursor, show response
+            cursor.remove();
+            respEl.textContent = lineData.resp;
+            respEl.classList.add('visible');
+
+            await sleep(LINE_GAP);
+          }
+
+          // Blinking cursor on last line after all done
+          await sleep(LOOP_PAUSE);
+        }
+      }
+
+      runLoop();
+    })();
+
     loadProjects();
   </script>
 </body>
